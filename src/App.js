@@ -8,13 +8,13 @@ import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import CreateList from "./screens/CreateList/CreateList"
 import SingleList from "./screens/SingleList/SingleList";
 import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route } from "react-router-dom";
 import { useState } from "react";
 const App = () => {
   const [search, setSearch] = useState("")
   
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Header setSearch={setSearch}/>
       <main>
         <Route path="/" component={LandingPage} exact />
@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/mylists" component={() => <MyLists search={search} /> } />
       </main>
       <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
