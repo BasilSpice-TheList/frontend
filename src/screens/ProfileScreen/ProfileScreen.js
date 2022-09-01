@@ -13,7 +13,7 @@ const ProfileScreen = ({ location, history }) => {
   const [pic, setPic] = useState();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [picMessage, setPicMessage] = useState();
+  // const [picMessage, setPicMessage] = useState();
 
   const dispatch = useDispatch();
 
