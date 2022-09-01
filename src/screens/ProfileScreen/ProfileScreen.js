@@ -13,7 +13,7 @@ const ProfileScreen = ({ location, history }) => {
   const [pic, setPic] = useState();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const [picMessage, setPicMessage] = useState();
+  const [picMessage, setPicMessage] = useState();
 
   const dispatch = useDispatch();
 
@@ -33,35 +33,35 @@ const ProfileScreen = ({ location, history }) => {
     }
   }, [history, userInfo]);
 
-//   const postDetails = (pics) => {
-//     if (
-//       pics ===
-//       "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
-//     ) {
-//       return setPicMessage("Please Select an Image");
-//     }
-//     setPicMessage(null);
-//     if (pics.type === "image/jpeg" || pics.type === "image/png") {
-//       const data = new FormData();
-//       data.append("file", pics);
-//       data.append("upload_preset", "thelist");
-//       data.append("cloud_name", "basilspice");
-//       fetch("https://api.cloudinary.com/v1_1/basilspice/image/upload", {
-//         method: "post",
-//         body: data,
-//       })
-//         .then((res) => res.json())
-//         .then((data) => {
-//           console.log(data);
-//           setPic(data.url.toString());
-//         })
-//         .catch((err) => {
-//           console.log(err);
-//         });
-//     } else {
-//       return setPicMessage("Please Select an Image");
-//     }
-//   };
+  const postDetails = (pics) => {
+    if (
+      pics ===
+      "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+    ) {
+      return setPicMessage("Please Select an Image");
+    }
+    setPicMessage(null);
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "thelist");
+      data.append("cloud_name", "basilspice");
+      fetch("https://api.cloudinary.com/v1_1/basilspice/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setPic(data.url.toString());
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      return setPicMessage("Please Select an Image");
+    }
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -126,7 +126,7 @@ const ProfileScreen = ({ location, history }) => {
                 <Form.Group controlId="pic">
                   <Form.Label>Change Profile Picture</Form.Label>
                   <Form.Control
-                    // onChange={(e) => postDetails(e.target.files[0])}
+                    onChange={(e) => postDetails(e.target.files[0])}
                     id="custom-file"
                     type="image/png"
                     label="Upload Profile Picture"
